@@ -1,7 +1,7 @@
 // about the Static Local Variables
 
 // function of checking button
-bool checkButton(byte pin){
+bool ButtonState(byte pin){
   // only run once when initiate
   static unsigned long lastDebounceTime = 0; 
   static unsigned long pressStartTime = 0;
@@ -28,15 +28,14 @@ bool checkButton(byte pin){
   // without this code the 1st if statement will be skipped
   return (stableState==LOW);  // switch closed
 }
-
 void setup() {
 
-  pinMode(2, INPUT_PULLUP);
-  Serial.begin(8600);
+  pinMode(5, INPUT_PULLUP);
+  Serial.begin(9600);
 }
 
 void loop() {
-  if(checkButton(2)){
+  if(ButtonState(5)){
     Serial.println("Button pressed");
   }
 }
